@@ -31,4 +31,5 @@ object Dependencies {
   val liftJson      = "net.liftweb"                             %%  "lift-json"                   % "2.5-RC5"
   val json4sNative  = "org.json4s"                              %%  "json4s-native"               % "3.2.4"
   val json4sJackson = "org.json4s"                              %%  "json4s-jackson"              % "3.2.4"
+  val metrics       = "com.codahale.metrics"                    %   "metrics-core"                % "3.0.0-BETA3"
 }
