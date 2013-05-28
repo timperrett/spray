@@ -11,7 +11,7 @@ trait MetricDirectives {
 
   def timeRequestResponse: Directive0 =
     mapRequestContext { ctx ⇒
-      val timer = metrics.timer("response timer at " + ctx.request.uri.toString) // TODO: make this name configurable via magnet
+      val timer = metrics.timer("timer @ " + ctx.request.uri.toString) // TODO: make this name configurable via magnet
       val context = timer.time()
       ctx.withRouteResponseMapped { response ⇒
         context.stop()
@@ -19,4 +19,9 @@ trait MetricDirectives {
       }
     }
 
+  def meterRequest: Directive0 =
+    mapRequestContext { ctx ⇒
+      metrics.meter("meter @ " + ctx.request.uri.toString).mark()
+      ctx
+    }
 }

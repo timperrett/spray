@@ -18,9 +18,11 @@ class MetricDirectivesSpec extends FlatSpec
 
   val route =
     timeRequestResponse {
-      path("foo" / "bar") {
-        get {
-          complete("ok")
+      meterRequest {
+        path("foo" / "bar") {
+          get {
+            complete("ok")
+          }
         }
       }
     }
